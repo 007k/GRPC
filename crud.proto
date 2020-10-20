@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+message create_student {
+    string name = 1;
+    string dob = 2;
+    int32 student_id = 3;
+    string mobilenumber = 4;
+}
+
+message update_student {
+    string name = 1;
+    string dob = 2;
+    int32 student_id = 3;
+    string mobilenumber = 4;
+}
+
+message delete_student {
+    int32 student_id = 1;
+}
+
+message fetch_student {
+    string name = 1;
+    string dob = 2;
+    int32 student_id = 3;
+    string mobilenumber = 4;
+}
+
+message fetch_student_all {
+    repeated fetch_student alldata = 1;
+}
+
+message success_message{
+    string msg = 1; 
+}
+
+message Null {};
+
+service crud_operations {
+    rpc fetchStudentD(Null) returns (fetch_student_all) {}
+
+    rpc createStudentD(create_student) returns (success_message) {}
+
+    rpc updateStudentD(update_student) returns (success_message) {}
+
+    rpc deleteStudentD(delete_student) returns (success_message) {}
+}
+
+
